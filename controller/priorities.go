@@ -32,7 +32,7 @@ func prioritize(args schedulerapi.ExtenderArgs) *schedulerapi.HostPriorityList {
 		// 因为上面取得的值是瞬时值，完整的CPU可使用率的计算应加入滑动窗口的操作
 		// 所以这里还应保留随机化的元素，即原来的随机打分情况
 		// 打分算法为：CPU和内存的权重各占50%，二者取平均得到资源的平均可使用率，然后乘上原有的随机化打分
-		score := int((cpu + memory) / 2.0) * rand.Intn(schedulerapi.MaxPriority + 1)
+		score := int((cpu + memory) / 2)) * rand.Intn(schedulerapi.MaxPriority + 1)
 		// score := rand.Intn(schedulerapi.MaxPriority + 1)
 		log.Printf(luckyPrioMsg, pod.Name, pod.Namespace, score)
 		hostPriorityList[i] = schedulerapi.HostPriority{
